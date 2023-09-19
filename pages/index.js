@@ -57,38 +57,38 @@ const p1data02 = [
 const barData = [
   {
     "name": "Page A",
-    "uv": 4000,
-    "pv": 2400
+    "ap": 4000,
+    "ar": 2400
   },
   {
     "name": "Page B",
-    "uv": 3000,
-    "pv": 1398
+    "ap": 3000,
+    "ar": 1398
   },
   {
     "name": "Page C",
-    "uv": 2000,
-    "pv": 9800
+    "ap": 2000,
+    "ar": 9800
   },
   {
     "name": "Page D",
-    "uv": 2780,
-    "pv": 3908
+    "ap": 2780,
+    "ar": 3908
   },
   {
     "name": "Page E",
-    "uv": 1890,
-    "pv": 4800
+    "ap": 1890,
+    "ar": 4800
   },
   {
     "name": "Page F",
-    "uv": 2390,
-    "pv": 3800
+    "ap": 2390,
+    "ar": 3800
   },
   {
     "name": "Page G",
-    "uv": 3490,
-    "pv": 4300
+    "ap": 3490,
+    "ar": 4300
   }
 ]
 
@@ -171,6 +171,7 @@ export default function Home() {
             <h2 className='text-4xl text-blue-600 font-semibold'>$6,621,280</h2>
           </div>
           <div className='bg-white'>
+            <p className='text-lg text-black font-medium pl-2'>Current Ratio</p>
           <PieChart width={290} height={250}>
             <Tooltip />
             <Pie data={p1data01} dataKey="value" nameKey="name" cx="50%" cy="60%" outerRadius={50} fill="#72A956" />
@@ -184,11 +185,12 @@ export default function Home() {
             <h2 className='text-4xl text-red-600 font-semibold'>$1,630,270</h2>
           </div>
           <div className='bg-white'>
-          <PieChart width={290} height={250}>
-            <Tooltip />
-            <Pie data={p1data01} dataKey="value" nameKey="name" cx="50%" cy="60%" outerRadius={50} fill="#A6A059" />
-            <Pie data={p1data02} dataKey="value" nameKey="name" cx="50%" cy="60%" innerRadius={60} outerRadius={80} fill="#595FA6" label />
-          </PieChart>
+            <p className='text-lg text-black font-medium pl-2'>DSI</p>
+            <PieChart width={290} height={250}>
+              <Tooltip />
+              <Pie data={p1data01} dataKey="value" nameKey="name" cx="50%" cy="60%" outerRadius={50} fill="#A6A059" />
+              <Pie data={p1data02} dataKey="value" nameKey="name" cx="50%" cy="60%" innerRadius={60} outerRadius={80} fill="#595FA6" label />
+            </PieChart>
           </div>
         </div>
         <div className='grid grid-rows-[1fr_2fr] gap-4'>
@@ -197,6 +199,7 @@ export default function Home() {
             <h2 className='text-5xl text-blue-900 font-semibold'>75.38 %</h2>
           </div>
           <div className='bg-white'>
+          <p className='text-lg text-black font-medium pl-2'>DSO</p>
           <PieChart width={290} height={250}>
             <Tooltip />
             <Pie data={p1data01} dataKey="value" nameKey="name" cx="50%" cy="60%" outerRadius={50} fill="#BE5D41" />
@@ -212,6 +215,7 @@ export default function Home() {
             <h2 className='text-5xl text-blue-900 font-semibold'>1.10 %</h2>
           </div>
           <div className='bg-white'>
+          <p className='text-lg text-black font-medium pl-2'>DPO</p>
             <PieChart width={290} height={250}>
             <Tooltip />
             <Pie data={p1data01} dataKey="value" nameKey="name" cx="50%" cy="60%" outerRadius={50} fill="#B946A4" />
@@ -219,19 +223,21 @@ export default function Home() {
           </PieChart>
           </div>
         </div>
-        <div className='bg-white flex items-end pb-2 pr-4'>
+        <div className='bg-white flex flex-col  items-start justify-end pr-4'>
+          <p className='text-lg text-black font-medium pl-2'>Total Accounts Recievable and Payable aging</p>
         <BarChart width={590} height={430} data={barData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" fill="#724CB3" />
-          <Bar dataKey="uv" fill="#8DB34C" />
+          <Bar dataKey="ar" fill="#724CB3" />
+          <Bar dataKey="ap" fill="#8DB34C" />
         </BarChart>
         </div>
       </section>
-      <section className='bg-white flex items-end justify-center'>
+      <section className='bg-white flex flex-col items-start justify-between'>
+      <p className='text-lg text-black font-medium pl-2'>Net Working Capital vs Gross Working Capital</p>
       <LineChart width={920} height={430} data={barData}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
@@ -239,11 +245,12 @@ export default function Home() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="ar" stroke="#8884d8" />
+        <Line type="monotone" dataKey="ap" stroke="#82ca9d" />
       </LineChart>
       </section>
-      <section className='bg-white flex justify-center items-end'>
+      <section className='bg-white flex flex-col items-start justify-between'>
+      <p className='text-lg text-black font-medium pl-2'>Profit and Loss Summary</p>
       <BarChart width={920} height={430} data={data} margin={{top: 20, right: 20, bottom: 20, left: 20}} >
         <XAxis dataKey="day" />
         <YAxis />
